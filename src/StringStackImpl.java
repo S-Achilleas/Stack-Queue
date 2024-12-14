@@ -2,8 +2,8 @@ import java.util.NoSuchElementException;
 import java.io.PrintStream;
 public class StringStackImpl<T> implements StringStack<T> {
 
-    public Node<T> head;
-    public int counter;
+    private Node<T> head;
+    private int counter;
 
     public StringStackImpl(){
         this.head = null;
@@ -51,5 +51,3 @@ public class StringStackImpl<T> implements StringStack<T> {
         return counter;
     }
 }
-///333333
-///444
