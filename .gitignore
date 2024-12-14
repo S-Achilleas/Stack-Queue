@@ -1,8 +1,1 @@
-# Ignore everything
-*
 
-# Allow directories
-!*/
-
-# Allow .java files
-!*.java
