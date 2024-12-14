@@ -1,1 +1,8 @@
+# macOS system files
+.DS_Store
 
+# IntelliJ IDEA project files
+.idea/
+
+# Compiled Java class files
+*.class
