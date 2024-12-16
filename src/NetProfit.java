@@ -87,7 +87,7 @@ public class NetProfit {
             if(balance>=0){
                 System.out.println("Profit: " + balance);
             } else {
-                System.out.println("Loss: " + balance);
+                System.out.println("Loss: " + balance*(-1));
             }
         } catch (FileNotFoundException e){
             System.err.println("File not found!");
