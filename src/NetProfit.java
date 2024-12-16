@@ -1,9 +1,9 @@
 import java.io.*;
+import java.util.NoSuchElementException;
 import java.util.Scanner;
 
 public class NetProfit {
     public static void main(String[] args) {
-        String filename = args[0];
         /*
             stock_queue and price_queue have the same amount of objects
             they will be used in parallel
@@ -15,6 +15,7 @@ public class NetProfit {
         double balance = 0.0;
 
         try {
+            String filename = args[0];
             Scanner fileScanner = new Scanner(new File(filename));
             while (fileScanner.hasNextLine()) {
                 String line = fileScanner.nextLine(); // reading next line
@@ -29,7 +30,7 @@ public class NetProfit {
                     lineScanner.next(); // skipping "price" string
                     price_queue.put(Double.parseDouble(lineScanner.next()));
                 }
-                else { // type == "sell"
+                else { // type equals "sell"
                     /*
                         if sell then retrieve first transaction and loop
                     */
@@ -39,6 +40,8 @@ public class NetProfit {
                     while (true){
                         if (sell_amount<stock_queue.peek()){
                             /*
+                                ** throws NoSuchElementException in case stock_queue
+                                    is empty **
                                 if sell_amount (of stocks) is less than the first
                                 item of stock_queue (head value) then:
                                 calculate balance and subtract sell_amount from
@@ -81,9 +84,20 @@ public class NetProfit {
                 }
             }
             fileScanner.close(); // Close Scanner
-            System.out.println("Balance: " + balance);
-        } catch (IOException e) {
-            System.out.println("Error reading file!");
+            if(balance>=0){
+                System.out.println("Profit: " + balance);
+            } else {
+                System.out.println("Loss: " + balance);
+            }
+        } catch (FileNotFoundException e){
+            System.err.println("File not found!");
+        } catch (ArrayIndexOutOfBoundsException e) {
+            System.err.println("Please specify a file!");
+        }
+        catch (NoSuchElementException e) {
+            System.err.println("Stock queue is empty, not enough stock to sell!"
+                    + "\n" + "Please make sure that you are buying more stock" +
+                    " than you are selling." );
         }
     }
 }
