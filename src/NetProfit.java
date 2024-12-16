@@ -12,7 +12,7 @@ public class NetProfit {
          */
         DoubleQueueImpl<Double> stock_queue = new DoubleQueueImpl<>();
         DoubleQueueImpl<Double> price_queue = new DoubleQueueImpl<>();
-        Double balance = 0.0;
+        double balance = 0.0;
 
         try {
             Scanner fileScanner = new Scanner(new File(filename));
@@ -74,7 +74,7 @@ public class NetProfit {
                                 in this instance from sell_amount of stocks,
                                 loop continues
                              */
-                            balance += stock_queue.peek() * sell_amount - stock_queue.peek() * price_queue.get();
+                            balance += stock_queue.peek() * sell_price - stock_queue.peek() * price_queue.get();
                             sell_amount -= stock_queue.get();
                         }
                     }
