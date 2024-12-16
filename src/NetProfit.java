@@ -83,12 +83,9 @@ public class NetProfit {
                     }
                 }
             }
-            fileScanner.close(); // Close Scanner
-            if(balance>=0){
-                System.out.println("Profit: " + balance);
-            } else {
-                System.out.println("Loss: " + balance*(-1));
-            }
+            fileScanner.close();
+            calc(balance);
+
         } catch (FileNotFoundException e){
             System.err.println("File not found!");
         } catch (ArrayIndexOutOfBoundsException e) {
@@ -97,7 +94,19 @@ public class NetProfit {
         catch (NoSuchElementException e) {
             System.err.println("Stock queue is empty, not enough stock to sell!"
                     + "\n" + "Please make sure that you are buying more stock" +
-                    " than you are selling." );
+                    " than you are selling." + "\n" + "Skipping all next transactions..." );
+            calc(balance);
+        }
+    }
+    private static void calc(double input){
+        /*
+            calculates balance pointing out if there is profit
+            or there is loss
+         */
+        if(input>=0){
+            System.out.println("Profit: " + input);
+        } else {
+            System.out.println("Loss: " + input*(-1));
         }
     }
 }
