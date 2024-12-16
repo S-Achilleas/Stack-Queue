@@ -69,20 +69,19 @@ public class NetProfit {
                                 (first item of stock queue):
                                 calculate balance via stock_queue first item
                                 since it is smaller, using "get" in the process
-                                to remove both stock_queue and price_queue
-                                subtracting the amount of stocks calculated
-                                in this loop instance, loop continues
+                                to remove both stock_queue head and price_queue head,
+                                then subtract the amount of stocks calculated
+                                in this instance from sell_amount of stocks,
+                                loop continues
                              */
                             balance += stock_queue.peek() * sell_amount - stock_queue.peek() * price_queue.get();
                             sell_amount -= stock_queue.get();
                         }
                     }
                 }
-
-
             }
-
             fileScanner.close(); // Close Scanner
+            System.out.println("Balance: " + balance);
         } catch (IOException e) {
             System.out.println("Error reading file!");
         }
