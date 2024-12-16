@@ -84,7 +84,7 @@ public class NetProfit {
                 }
             }
             fileScanner.close();
-            calc(balance);
+            printpl(balance);
 
         } catch (FileNotFoundException e){
             System.err.println("File not found!");
@@ -95,13 +95,12 @@ public class NetProfit {
             System.err.println("Stock queue is empty, not enough stock to sell!"
                     + "\n" + "Please make sure that you are buying more stock" +
                     " than you are selling." + "\n" + "Skipping all next transactions..." );
-            calc(balance);
+            printpl(balance);
         }
     }
-    private static void calc(double input){
+    private static void printpl(double input){
         /*
-            calculates balance pointing out if there is profit
-            or there is loss
+            prints profit or loss based on input
          */
         if(input>=0){
             System.out.println("Profit: " + input);
