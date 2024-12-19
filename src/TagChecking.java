@@ -39,9 +39,9 @@ public class TagChecking {
             }
 
         }catch (FileNotFoundException e){
-            System.out.println("File not found!");
+            System.err.println("File not found!");
         } catch (IOException e) {
-            System.out.println("Error reading file!");
+            System.err.println("Error reading file!");
         }
     }
 
